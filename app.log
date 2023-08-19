@@ -1,0 +1,18 @@
+2023-08-18 21:52:20.748  INFO 13318 --- [main] org.example.App                          : Starting App using Java 1.8.0_191 on MacBook-Pro.local with PID 13318 (/Users/yantingyue/java/hotdog/target/classes started by yantingyue in /Users/yantingyue/java/hotdog)
+2023-08-18 21:52:20.752  INFO 13318 --- [main] org.example.App                          : No active profile set, falling back to 1 default profile: "default"
+2023-08-18 21:52:21.634  INFO 13318 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-08-18 21:52:21.643  INFO 13318 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-08-18 21:52:21.643  INFO 13318 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2023-08-18 21:52:21.769  INFO 13318 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-08-18 21:52:21.769  INFO 13318 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 982 ms
+2023-08-18 21:52:22.079  INFO 13318 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-18 21:52:22.089  INFO 13318 --- [main] org.example.App                          : Started App in 1.783 seconds (JVM running for 2.368)
+2023-08-18 22:13:14.272  INFO 13700 --- [main] org.example.App                          : Starting App using Java 1.8.0_191 on MacBook-Pro.local with PID 13700 (/Users/yantingyue/java/hotdog/target/classes started by yantingyue in /Users/yantingyue/java/hotdog)
+2023-08-18 22:13:14.276  INFO 13700 --- [main] org.example.App                          : No active profile set, falling back to 1 default profile: "default"
+2023-08-18 22:13:14.963  INFO 13700 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-08-18 22:13:14.969  INFO 13700 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-08-18 22:13:14.970  INFO 13700 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.68]
+2023-08-18 22:13:15.069  INFO 13700 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-08-18 22:13:15.070  INFO 13700 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 760 ms
+2023-08-18 22:13:15.346  INFO 13700 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-08-18 22:13:15.355  INFO 13700 --- [main] org.example.App                          : Started App in 1.458 seconds (JVM running for 1.919)
