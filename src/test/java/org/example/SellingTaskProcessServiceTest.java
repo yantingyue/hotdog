@@ -8,8 +8,9 @@ public class SellingTaskProcessServiceTest {
         SellingTaskProcessService sellingTaskProcessService = new SellingTaskProcessService();
         sellingTaskProcessService.init();
 
-        String str = "16e82b22f8524ed6b1b16db36804c71f,1019327,1321,725396,50" +
-                "&16e82b22f8524ed6b1b16db36804c71f,1019327,1321,725396,50";
+        String str = "16e82b22f8524ed6b1b16db36804c71f,1019327,1321,725396,50";
+
+        //多个这样子用不&连起来 "16e82b22f8524ed6b1b16db36804c71f,1019327,1321,725396,50&16e82b22f8524ed6b1b16db36804c71f,1019327,1321,725396,50";
 
         String[] split = str.split("&");
 

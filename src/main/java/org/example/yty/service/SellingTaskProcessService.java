@@ -97,7 +97,7 @@ public class SellingTaskProcessService implements InitializingBean {
                     }
                 }
 
-                if (myOnSaleList.size() > maxSaleSize) {
+                if (myOnSaleList.size() > take.getSellSize()) {
                     System.out.println("maxSaleSize");
                     cancelSale(take, myOnSaleList);
                 } else {
@@ -170,7 +170,7 @@ public class SellingTaskProcessService implements InitializingBean {
 
         String key = taskRequestDTO.getToken() + "-" + taskRequestDTO.getProductId();
         if (myProductCount.containsKey(key)) {
-            if (myProductCount.get(key) - resp.getData().getNft_count() >= maxSaleSize) {
+            if (myProductCount.get(key) - resp.getData().getNft_count() >= taskRequestDTO.getSellSize()) {
                 myProductSaleState.put(key, false);
             }
             System.out.println(key + "已卖出了" + (myProductCount.get(key) - resp.getData().getNft_count()));
