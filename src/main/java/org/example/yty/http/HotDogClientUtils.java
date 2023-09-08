@@ -3,6 +3,7 @@ package org.example.yty.http;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.http.HttpEntity;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -34,6 +35,13 @@ public class HotDogClientUtils {
         // post请求是将参数放在请求体里面传过去的;这里将entity放入post请求体中
         httpPost.setEntity(entity);
 
+        RequestConfig config = RequestConfig.custom()
+                .setSocketTimeout(2000)
+                .setConnectTimeout(2000)
+                .setConnectionRequestTimeout(2000)
+                .build();
+        httpPost.setConfig(config);
+
         // 由客户端执行(发送)Post请求
         CloseableHttpResponse response = null;
         try {
@@ -46,7 +54,7 @@ public class HotDogClientUtils {
             }
 
         } catch (Exception exception) {
-            exception.printStackTrace();
+            System.out.println("http error");
         } finally {
             try {
                 // 释放资源
@@ -57,7 +65,7 @@ public class HotDogClientUtils {
                     response.close();
                 }
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("http error 2");
             }
         }
         return null;

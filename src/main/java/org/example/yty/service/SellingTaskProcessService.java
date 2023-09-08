@@ -57,7 +57,7 @@ public class SellingTaskProcessService implements InitializingBean {
                 }
                 HotDogSellingRequest build = HotDogSellingRequest.builder().product_id(take.getProductId())
                         .order_by("price")
-                        .unlock(1)
+                        .unlock(0)
                         .pageNumber(1)
                         .pageSize(10)
                         .nft_product_size_id(take.getNft_product_size_id())
@@ -118,7 +118,7 @@ public class SellingTaskProcessService implements InitializingBean {
                 }
                 Thread.sleep(30 * 1000);
             } catch (Exception exception) {
-                throw new Exception(exception);
+                System.out.println("error" + exception.toString());
             }
         }
     }
@@ -150,7 +150,7 @@ public class SellingTaskProcessService implements InitializingBean {
         }
     }
 
-    private List<MyProductDataResResp> saleList(SellingTaskRequestDTO taskRequestDTO) {
+    private List<MyProductDataResResp> saleList(SellingTaskRequestDTO taskRequestDTO) throws Exception {
         MyProductRequestDTO build = MyProductRequestDTO.builder().product_id(taskRequestDTO.getProductId())
                 .nft_product_size_id(taskRequestDTO.getNft_product_size_id())
                 .pageNumber(1)
@@ -164,7 +164,7 @@ public class SellingTaskProcessService implements InitializingBean {
         if (resp.getCode() == 0) {
             if (resp.getData() == null || resp.getData().getRes().isEmpty()) {
                 System.out.println("你没有这个商品 token:" + taskRequestDTO.getToken() + "--product_id:" + taskRequestDTO.getProductId() + "--Nft_product_size_id:" + taskRequestDTO.getNft_product_size_id());
-                return new ArrayList<>();
+                throw new Exception("saleList error");
             }
         }
 
@@ -193,7 +193,6 @@ public class SellingTaskProcessService implements InitializingBean {
 
         @Override
         public void run() {
-            System.out.println("www");
             SellingTaskProcessService.this.sellProcess();
         }
     }
