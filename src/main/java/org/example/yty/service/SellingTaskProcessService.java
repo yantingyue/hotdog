@@ -18,7 +18,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 @Component
 public class SellingTaskProcessService implements InitializingBean {
-    private final int maxSaleSize = 2;
+    private final int maxSaleSize = 3;
     private static final String sellingListUrl = "https://api.aichaoliuapp.cn/aiera/ai_match_trading/nft_second/sell_product/list";
     private static final String mySellingProductUrl = "https://api.aichaoliuapp.cn/aiera/ai_match_trading/nft/order/list2/detail_list";
     private static final String cancelSellingProductUrl = "https://api.aichaoliuapp.cn/aiera/ai_match_trading/nft_second/sell/cancel";
@@ -97,8 +97,9 @@ public class SellingTaskProcessService implements InitializingBean {
                     }
                 }
 
-                if (myOnSaleList.size() > take.getSellSize()) {
+                if (myOnSaleList.size() > take.getSellSize() || myOnSaleList.size() >= maxSaleSize) {
                     System.out.println("maxSaleSize");
+                    Thread.sleep(30 * 1000);
                     cancelSale(take, myOnSaleList);
                 } else {
                     //开始卖
@@ -146,7 +147,7 @@ public class SellingTaskProcessService implements InitializingBean {
             Map<String, Integer> cancel = new HashMap<>();
             cancel.put("second_id", resp.getData().getSecond_id());
             CancelResp cancelResp = HotDogClientUtils.doPost(cancelSellingProductUrl, take.getToken(), JSON.toJSON(cancel).toString(), CancelResp.class);
-            System.out.println(JSON.toJSON(cancelResp));
+            System.out.println("cancel result:" + JSON.toJSON(cancelResp));
         }
     }
 
