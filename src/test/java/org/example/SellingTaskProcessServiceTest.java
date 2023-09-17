@@ -5,13 +5,16 @@ import org.example.yty.service.SellingTaskProcessService;
 
 public class SellingTaskProcessServiceTest {
     public static void main(String[] args) throws InterruptedException {
-        SellingTaskProcessService sellingTaskProcessService = new SellingTaskProcessService();
-        sellingTaskProcessService.init();
+        // 设置一个钩子函数，在JVM退出时输出日志
+        Runtime.getRuntime()
+                .addShutdownHook(new Thread(() -> System.out.println("The JVM exit success~")));
 
-        String str = "16e82b22f8524ed6b1b16db36804c71f,1019327,1321,725396,50";
+        SellingTaskProcessService sellingTaskProcessService = new SellingTaskProcessService();
+
+        String str = "7b50884dc56f4c779dc7693617a7cd8a,1020659,2501,960123,35";
 
         //多个这样子用不&连起来 "16e82b22f8524ed6b1b16db36804c71f,1019327,1321,725396,50&16e82b22f8524ed6b1b16db36804c71f,1019327,1321,725396,50";
-
+        
         String[] split = str.split("&");
 
         for (String val : split) {
@@ -29,5 +32,8 @@ public class SellingTaskProcessServiceTest {
                     .build();
             sellingTaskProcessService.addQueue(build);
         }
+
+        sellingTaskProcessService.start();
+
     }
 }

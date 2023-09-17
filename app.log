@@ -16,3 +16,7 @@
 2023-08-18 22:13:15.070  INFO 13700 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 760 ms
 2023-08-18 22:13:15.346  INFO 13700 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
 2023-08-18 22:13:15.355  INFO 13700 --- [main] org.example.App                          : Started App in 1.458 seconds (JVM running for 1.919)
+2023-09-13 01:15:56.595  INFO   --- [Thread-0] o.apache.http.impl.execchain.RetryExec   : I/O exception (java.net.SocketException) caught when processing request to {s}->https://api.aichaoliuapp.cn:443: Broken pipe (Write failed)
+2023-09-13 01:15:56.644  INFO   --- [Thread-0] o.apache.http.impl.execchain.RetryExec   : Retrying request to {s}->https://api.aichaoliuapp.cn:443
+2023-09-17 04:08:24.658  INFO   --- [Thread-1] o.apache.http.impl.execchain.RetryExec   : I/O exception (java.net.SocketException) caught when processing request to {s}->https://api.aichaoliuapp.cn:443: Connection reset
+2023-09-17 04:08:24.697  INFO   --- [Thread-1] o.apache.http.impl.execchain.RetryExec   : Retrying request to {s}->https://api.aichaoliuapp.cn:443
