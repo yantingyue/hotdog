@@ -18,7 +18,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 @Component
 public class SellingTaskProcessService implements InitializingBean {
-    private final int maxSaleSize = 3;
+    private final int maxSaleSize = 1;
     private static final String sellingListUrl = "https://api.aichaoliuapp.cn/aiera/ai_match_trading/nft_second/sell_product/list";
     private static final String mySellingProductUrl = "https://api.aichaoliuapp.cn/aiera/ai_match_trading/nft/order/list2/detail_list";
     private static final String cancelSellingProductUrl = "https://api.aichaoliuapp.cn/aiera/ai_match_trading/nft_second/sell/cancel";
@@ -31,10 +31,15 @@ public class SellingTaskProcessService implements InitializingBean {
 
     private static final List<String> exists = new ArrayList<>();
 
-    public void init() {
-        for (int i = 0; i < 8; i++) {
-            new Thread(new SellingTaskExecutorService("Thread-selling-" + i)).start();
+    public void start() throws InterruptedException {
+        List<Thread> list = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            Thread thread = new Thread(new SellingTaskExecutorService("Thread-selling-" + i));
+            list.add(thread);
+            thread.setDaemon(true);
+            thread.start();
         }
+        Thread.currentThread().join();
     }
 
     public void addQueue(SellingTaskRequestDTO requestDTO) {
@@ -184,7 +189,6 @@ public class SellingTaskProcessService implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        init();
     }
 
     public class SellingTaskExecutorService extends Thread {
