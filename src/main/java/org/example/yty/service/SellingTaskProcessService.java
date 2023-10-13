@@ -167,6 +167,7 @@ public class SellingTaskProcessService implements InitializingBean {
 
 
         assert resp != null;
+        
         if (resp.getCode() == 0) {
             if (resp.getData() == null || resp.getData().getRes().isEmpty()) {
                 System.out.println("你没有这个商品 token:" + taskRequestDTO.getToken() + "--product_id:" + taskRequestDTO.getProductId() + "--Nft_product_size_id:" + taskRequestDTO.getNft_product_size_id());
